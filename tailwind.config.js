@@ -15,7 +15,8 @@ module.exports = {
         secondary: '#eddcd2',
         accent: '#fff1e6',
         background: '#f0efeb',
-        text: '#000000'
+        text: '#000000',
+        header: '#eddcd2'
       },
       fontFamily: {
         sans: ['Poppins', 'sans-serif']

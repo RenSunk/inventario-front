@@ -23,7 +23,7 @@ export const Mainlayout: FC<MainlayoutProps> = ({ children }) => {
       >
         <div className="flex h-full w-full ">
           <Menu />
-          <main className="bg-gray-100 h-full w-full">{children}</main>
+          <main className="bg-background h-full w-full">{children}</main>
         </div>
         <Footer />
       </div>

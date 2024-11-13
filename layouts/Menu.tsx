@@ -13,7 +13,7 @@ export const Menu = () => {
   ];
 
   return (
-    <div className="bg-gray-900 text-white h-full">
+    <div className="bg-primary text-text h-full">
       <ul>
         {menuItems.map((item, index) => (
           <li key={index} className="hover:bg-gray-700 m-3  rounded-xl">
