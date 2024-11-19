@@ -16,11 +16,17 @@ module.exports = {
         accent: '#fff1e6',
         background: '#f0efeb',
         text: '#000000',
-        header: '#eddcd2'
+        header: '#eddcd2',
+        hovertheme: '#334155',
+        focustheme: '#334155',
+        buttontheme: '#b57c65'
       },
       fontFamily: {
         sans: ['Poppins', 'sans-serif']
-      }
+      },
+      boxShadow: {
+        'extra-intense': '0 8px 20px rgba(0, 0, 0, 0.7)', // Sombra muy marcada
+      },
     },
   },
   plugins: [],
