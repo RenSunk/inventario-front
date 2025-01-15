@@ -16,11 +16,13 @@ module.exports = {
         accent: '#fff1e6',
         background: '#f0efeb',
         text: '#000000',
+        textWhite: '#ffffff',
         header: '#eddcd2',
         hovertheme: '#334155',
         focustheme: '#334155',
         buttontheme: '#b57c65',
-        urlText: '#238cd4'
+        urlText: '#238cd4',
+        Targets: '#334155'
       },
       fontFamily: {
         sans: ['Poppins', 'sans-serif']

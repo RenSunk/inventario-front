@@ -21,16 +21,16 @@ export const Navbar = () => {
   }, [optionsRef]);
 
   return (
-    <nav className="border-b-2 border-gray-300 w-full flex justify-between px-2">
+    <nav className="border-b-2 bg-primary w-full flex justify-between px-2">
       <div></div>
       <div ref={optionsRef} className="relative">
         <div
-          className="flex items-center py-2 cursor-pointer"
+          className="flex items-center py-2 cursor-pointer hover:bg-buttontheme hover:text-textWhite hover:rounded-lg p-2"
           onClick={() => {
             setShow(!show);
           }}
         >
-          <h4 className="font-semibold mx-2">Profile</h4>
+          <h4 className="font-semibold mx-2">Cuenta</h4>
           <div
             style={{
               height: "100%",
@@ -48,7 +48,7 @@ export const Navbar = () => {
         </div>
 
         <div
-          className={`bg-white ${
+          className={`bg-primary ${
             show ? "block" : "hidden"
           } absolute right-0 top-0 mt-12`}
           style={{
@@ -57,17 +57,17 @@ export const Navbar = () => {
             zIndex: 1,
           }}
         >
-          <button className="flex items-center gap-2 hover:bg-gray-300 w-full px-5 my-2">
+          <button className="flex items-center gap-2 hover:bg-hovertheme hover:text-white w-full px-5 my-2">
             <Person />
-            <h6>Perfil</h6>
+            <h6>Actualizar</h6>
           </button>
-          <button className="flex items-center gap-2 hover:bg-gray-300 w-full px-5 my-2">
+          <button className="flex items-center gap-2 hover:bg-hovertheme hover:text-white w-full px-5 my-2">
             <Settings />
             <h6>Configuración</h6>
           </button>
           <Link
             href="/"
-            className="flex items-center gap-2 hover:bg-gray-300 w-full px-5 my-2"
+            className="flex items-center gap-2 hover:bg-hovertheme hover:text-white w-full px-5 my-2"
           >
             <Logout />
             <h6>Cerrar sesión</h6>
