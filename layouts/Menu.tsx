@@ -14,18 +14,24 @@ export const Menu = () => {
       link: "/",
     },
     {
+<<<<<<< Updated upstream
       name: "Agregar Producto",
       link: "/AddProductos",
     },
     {
       name: "Inventario",
       link: "/Inventario",
+=======
+      name: "Prueba",
+      link: "/prueba1"
+>>>>>>> Stashed changes
     }
   ];
 
   return (
     <div className="bg-primary text-text h-full">
       <ul>
+<<<<<<< Updated upstream
         {menuItems.map((item, index) => {
           const isActive = router.pathname === item.link;
 
@@ -44,6 +50,15 @@ export const Menu = () => {
             </li>
           );
         })}
+=======
+        {menuItems.map((item, index) => (
+          <li key={index} className="hover:bg-secondary m-3  rounded-xl">
+            <Link className="flex w-full h-full py-2 pl-5 pr-20 " href={item.link}>
+              {item.name}
+            </Link>
+          </li>
+        ))}
+>>>>>>> Stashed changes
       </ul>
     </div>
   );
