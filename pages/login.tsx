@@ -1,5 +1,6 @@
 import Image from "next/image";
 import InventoryLoggin from "../images/InventoryLoggin.png";
+import Link from "next/link";
 
 export default function Login() {
     return (
@@ -53,7 +54,7 @@ export default function Login() {
                         Iniciar Sesión
                     </button>
                     <p className="text-sm font-light text-gray-600 dark:text-gray-600">
-                      ¿No tienes una cuenta aún? <a href="/registerUser" className="font-medium text-urlText hover:underline">¡Registrate!</a>
+                      ¿No tienes una cuenta aún? <Link href="/registerUser" className="font-medium text-urlText hover:underline">¡Registrate!</Link>
                     </p>
                 </form>
             </div>

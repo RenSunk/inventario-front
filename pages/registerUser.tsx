@@ -1,5 +1,6 @@
 import Image from "next/image";
 import InventoryLoggin from "../images/InventoryLoggin.png";
+import Link from "next/link";
 
 export default function Prueba() {
   return (
@@ -57,7 +58,7 @@ export default function Prueba() {
             Registrate
           </button>
           <p className="text-sm font-light text-gray-600 dark:text-gray-600">
-            ¿Ya tienes una cuenta? <a href="/login" className="font-medium text-urlText hover:underline">¡Inicia Sesion!</a>
+            ¿Ya tienes una cuenta? <Link href="/login" className="font-medium text-urlText hover:underline">¡Inicia Sesion!</Link>
           </p>
         </form>
       </div>

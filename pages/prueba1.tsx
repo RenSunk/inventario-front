@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { GET_cantidades } from "../services/cantidades";
 import { TextField } from "@mui/material";
 
-export default function prueba() {
+export default function Prueba() {
   const [listCantidades, setListCantidades] = useState<Array<{}>>([]);
 
   useEffect(() => {
@@ -64,6 +64,6 @@ export default function prueba() {
   );
 }
 
-prueba.getLayout = function getLayout(page: React.ReactNode) {
+Prueba.getLayout = function getLayout(page: React.ReactNode) {
   return <Mainlayout>{page}</Mainlayout>;
 };
