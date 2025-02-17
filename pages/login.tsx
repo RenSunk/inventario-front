@@ -1,17 +1,44 @@
 import Image from "next/image";
 import InventoryLoggin from "../images/InventoryLoggin.png";
 import Link from "next/link";
+import React, { useState } from "react";
 
 export default function Login() {
+
+    const[usuario, setUsuario] = useState('')
+    const[contrasena, setContrasena] = useState('')
+    const[id, setId] = useState('')
+    const[traza, setTraza] = useState('')
+
+    const envioDataLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        const response = await fetch('https://api.inventario.tecno-service-soft.com/cuenta/login/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                username: usuario,
+                password: contrasena, 
+                client_id: 1
+            })
+        });
+
+        const data = await response.json();
+        setTraza(data.message);
+
+        if(response.ok){
+            console.log('Token:', data.Token)
+        }
+
+        console.log('Traza:', data.message);
+    }
+
     return (
         <div className="flex justify-center items-center min-h-screen bg-background w-full ">
             <div className="bg-primary rounded-lg shadow-extra-intense p-6 flex flex-col items-center justify-center w-[30%] h-[60vh]">
                 <form
                     className="rounded-lg p-6 w-full h-full flex flex-col items-center justify-center gap-3"
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                        console.log("Formulario enviado");
-                    }}
+                    onSubmit={envioDataLogin}
                 >
                     <h1 className="text-xl xl:text-4xl font-semibold">
                         Inicio de Sesión
@@ -34,10 +61,9 @@ export default function Login() {
                         </div>
                     </div>
                     <input
-                        type="email"
-                        name="email"
-                        placeholder= "nombre@correo.com"
+                        placeholder= "usuario"
                         required
+                        onChange={(e) => setUsuario(e.target.value)}
                         className="border border-gray-300 rounded-md px-[4%] py-[2%] focus:outline-none focus:ring-2 focus:ring-focus w-full"
                     />
                     <input
@@ -45,6 +71,7 @@ export default function Login() {
                         name="password"
                         placeholder="••••••••••••••••"
                         required
+                        onChange={(e) => setContrasena(e.target.value)}
                         className="border border-gray-300 rounded-md px-[4%] py-[2%] focus:outline-none focus:ring-2 focus:ring-focus w-full"
                     />
                     <button
