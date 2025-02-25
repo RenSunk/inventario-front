@@ -1,36 +1,47 @@
 import Image from "next/image";
 import InventoryLoggin from "../images/InventoryLoggin.png";
 import Link from "next/link";
+import { useRouter } from 'next/router';
 import React, { useState } from "react";
 
 export default function Login() {
 
+    const router = useRouter();
     const[usuario, setUsuario] = useState('')
     const[contrasena, setContrasena] = useState('')
     const[id, setId] = useState('')
     const[traza, setTraza] = useState('')
 
+
     const envioDataLogin = async (e: React.FormEvent) => {
         e.preventDefault();
+        try {
 
-        const response = await fetch('https://api.inventario.tecno-service-soft.com/cuenta/login/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                username: usuario,
-                password: contrasena, 
-                client_id: 1
-            })
-        });
+            const response = await fetch('https://api.inventario.tecno-service-soft.com/cuenta/login/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username: usuario,
+                    password: contrasena, 
+                    client_id: 1
+                })
+            });
+    
+            const data = await response.json();
+            console.log('Respuesta completa:', data);
 
-        const data = await response.json();
-        setTraza(data.message);
+            setTraza(data.message);
+    
+            if(response.ok){
+                console.log('Token:', data.access_token)
+                setTraza('Login exitoso');
+                router.push('/');
+            }
 
-        if(response.ok){
-            console.log('Token:', data.Token)
+        } catch (error) {
+            console.error('Error:', error);
+            setTraza('Error de conexión con el servidor');
         }
-
-        console.log('Traza:', data.message);
     }
 
     return (
