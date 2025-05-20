@@ -11,15 +11,15 @@ export const Menu = () => {
     },
     {
       name: "Inicio",
-      link: "/",
+      link: "/inicio",
     },
     {
       name: "Agregar Producto",
-      link: "/AddProductos",
+      link: "/addProductos",
     },
     {
       name: "Inventario",
-      link: "/Inventario",
+      link: "/inventoryProducts",
     },
     {
       name: "Prueba",
