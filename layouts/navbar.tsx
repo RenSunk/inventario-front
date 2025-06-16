@@ -1,11 +1,22 @@
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { Person, Settings, Logout } from "@mui/icons-material";
-import Link from "next/link";
+import { useRouter } from "next/router";
+import Cookies from "js-cookie";
+import { useAuth } from "../context/AuthContext";// Corrección: usamos el hook, no el contexto directo
 
 export const Navbar = () => {
   const [show, setShow] = useState(false);
   const optionsRef = useRef<HTMLDivElement>(null);
+
+  const { setToken } = useAuth();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    Cookies.remove(btoa("token"));   
+    setToken(null);                  
+    router.push("/");           
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -65,13 +76,13 @@ export const Navbar = () => {
             <Settings />
             <h6>Configuración</h6>
           </button>
-          <Link
-            href="/"
+          <button
+            onClick={handleLogout}
             className="flex items-center gap-2 hover:bg-hovertheme hover:text-white w-full px-5 my-2"
           >
             <Logout />
             <h6>Cerrar sesión</h6>
-          </Link>
+          </button>
         </div>
       </div>
     </nav>

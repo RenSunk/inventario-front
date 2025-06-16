@@ -36,6 +36,8 @@ interface Product {
 
 export default function Home() {
 
+  console.log("Se ingresa a la funcion Home de la clase inventoryProducts");
+
   const { token } = useAuth();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
