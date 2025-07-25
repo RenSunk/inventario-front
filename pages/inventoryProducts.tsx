@@ -35,7 +35,6 @@ interface Product {
 }
 
 export default function Home() {
-
   console.log("Se ingresa a la funcion Home de la clase inventoryProducts");
 
   const { token } = useAuth();
@@ -43,6 +42,9 @@ export default function Home() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+
+    console.log("Se ingresa al useEffect de la clase inventoryProducts");
+    console.log("Token:", token);
 
     if (!token) {
       return;
@@ -81,63 +83,70 @@ export default function Home() {
       {loading ? (
         <LoadingComponent />
       ) : (
-        <div className="w-full grid gap-6 px-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="flex flex-col items-start justify-start m-4 rounded-lg bg-Targets text-white shadow-lg hover:shadow-xl w-full max-w-sm p-4 space-y-4"
-            >
-              <div className="w-full flex justify-center">
-                <Image
-                  src={InventoryLoggin}
-                  alt="Inventario"
-                  className="rounded-lg object-contain w-full max-w-[100px] h-auto"
-                />
-              </div>
-
-              <h2 className="text-xl font-bold text-center w-full">{product.name}</h2>
-
-              <p className="text-sm text-center w-full text-gray-200 mb-2">
-                {product.description || "Sin descripción"}
-              </p>
-
-              {/* Unidades */}
-              {Array.isArray(product.units) &&
-                product.units.map((unit, idx) => (
-                  <div
-                    key={idx}
-                    className={`border-l-4 pl-3 py-1 ${unit.is_main ? "border-blue-400" : "border-orange-400"
-                      }`}
-                  >
-                    <p className="font-semibold">
-                      {unit.is_main ? "🔹 Unidad principal" : "🔸 Otra unidad"}: {unit.unit?.name ?? "Sin nombre"}
-                    </p>
-                    <ul className="text-sm list-disc ml-4">
-                      <li>Cantidad: {unit.quantity}</li>
-                      <li>Precio público: ${unit.public_price}</li>
-                      <li>Precio proveedor: ${unit.supplier_price}</li>
-                    </ul>
-                  </div>
-                ))}
-
-              {/* Inventario */}
-              {Array.isArray(product.stock_units) && product.stock_units.length > 0 && (
-                <div className="mt-2 text-sm">
-                  <p className="flex items-center">
-                    <span className="mr-1">📦</span> Total en inventario:{" "}
-                    <strong>{product.stock_units[0].remaining_quantity}</strong>
-                  </p>
-                  <p
-                    className={`flex items-center mt-1 ${product.stock_units[0].is_cut ? "text-yellow-300" : "text-green-400"
-                      }`}
-                  >
-                    <span className="mr-1">{product.stock_units[0].is_cut ? "⚠️" : "✅"}</span>
-                    {product.stock_units[0].is_cut ? "Con cortes" : "Sin cortes"}
-                  </p>
+        <div className="w-full h-[calc(90vh-64px)] overflow-y-auto px-6">
+          <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {products.map((product) => (
+              <div
+                key={product.id}
+                className="flex flex-col items-start justify-start m-4 rounded-lg bg-Targets text-white shadow-lg hover:shadow-xl w-full max-w-sm p-4 space-y-4"
+              >
+                <div className="w-full flex justify-center">
+                  <Image
+                    src={InventoryLoggin}
+                    alt="Inventario"
+                    className="rounded-lg object-contain w-full max-w-[100px] h-auto"
+                  />
                 </div>
-              )}
-            </div>
-          ))}
+
+                <h2 className="text-xl font-bold text-center w-full">{product.name}</h2>
+
+                <p className="text-sm text-center w-full text-gray-200 mb-2">
+                  {product.description || "Sin descripción"}
+                </p>
+
+                {Array.isArray(product.units) &&
+                  product.units.map((unit, idx) => (
+                    <div
+                      key={idx}
+                      className={`border-l-4 pl-3 py-1 ${
+                        unit.is_main ? "border-blue-400" : "border-orange-400"
+                      }`}
+                    >
+                      <p className="font-semibold">
+                        {unit.is_main ? "🔹 Unidad principal" : "🔸 Otra unidad"}:{" "}
+                        {unit.unit?.name ?? "Sin nombre"}
+                      </p>
+                      <ul className="text-sm list-disc ml-4">
+                        <li>Cantidad: {unit.quantity}</li>
+                        <li>Precio público: ${unit.public_price}</li>
+                        <li>Precio proveedor: ${unit.supplier_price}</li>
+                      </ul>
+                    </div>
+                  ))}
+
+                {Array.isArray(product.stock_units) && product.stock_units.length > 0 && (
+                  <div className="mt-2 text-sm">
+                    <p className="flex items-center">
+                      <span className="mr-1">📦</span> Total en inventario:{" "}
+                      <strong>{product.stock_units[0].remaining_quantity}</strong>
+                    </p>
+                    <p
+                      className={`flex items-center mt-1 ${
+                        product.stock_units[0].is_cut
+                          ? "text-yellow-300"
+                          : "text-green-400"
+                      }`}
+                    >
+                      <span className="mr-1">
+                        {product.stock_units[0].is_cut ? "⚠️" : "✅"}
+                      </span>
+                      {product.stock_units[0].is_cut ? "Con cortes" : "Sin cortes"}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>

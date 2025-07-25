@@ -20,7 +20,10 @@ module.exports = {
         header: '#eddcd2',
         hovertheme: '#334155',
         focustheme: '#334155',
-        buttontheme: '#b57c65',
+        buttontheme: '#b0745e',
+        buttonHoverTheme: '#935c49',
+        formButtonConfirmationTheme: '#1c8586',
+        formButtonConfirmationHoverTheme: '#1f7477',
         urlText: '#238cd4',
         Targets: '#334155'
       },
@@ -28,7 +31,7 @@ module.exports = {
         sans: ['Poppins', 'sans-serif']
       },
       boxShadow: {
-        'extra-intense': '0 8px 20px rgba(0, 0, 0, 0.7)', // Sombra muy marcada
+        'extra-intense': '0 8px 20px rgba(0, 0, 0, 0.7)',
       },
     },
   },
