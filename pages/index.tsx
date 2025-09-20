@@ -67,7 +67,7 @@ export default function Login() {
                 <LoadingComponent />
             ) : (
                 <div className="flex justify-center items-center min-h-screen bg-background w-full">
-                    <div className="bg-primary rounded-lg shadow-extra-intense p-6 flex flex-col items-center justify-center w-[30%] h-[60vh]">
+                    <div className="bg-beigePrimary rounded-lg shadow-extra-intense p-6 flex flex-col items-center justify-center w-[30%] h-[60vh]">
                         <form
                             className="rounded-lg p-6 w-full h-full flex flex-col items-center justify-center gap-3"
                             onSubmit={envioDataLogin}
@@ -108,7 +108,7 @@ export default function Login() {
                             />
                             <button
                                 type="submit"
-                                className="bg-buttontheme text-white rounded-md px-[4%] py-[2%] w-full hover:bg-hovertheme focus:outline-none focus:ring-2 focus:bg-focustheme"
+                                className="bg-confirm text-white rounded-md px-[4%] py-[2%] w-full hover:bg-confirmHover focus:outline-none focus:ring-2 focus:bg-focustheme"
                             >
                                 Iniciar Sesión
                             </button>

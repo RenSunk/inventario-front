@@ -32,7 +32,7 @@ export const Navbar = () => {
   }, [optionsRef]);
 
   return (
-    <nav className="border-b-2 bg-primary w-full flex justify-between px-2">
+    <nav className="border-b-2 bg-beigePrimary w-full flex justify-between px-2">
       <div></div>
       <div ref={optionsRef} className="relative">
         <div

@@ -5,39 +5,27 @@ export const Menu = () => {
   const router = useRouter(); // Obtener la ruta actual
 
   const menuItems = [
-    {
-      name: "Dashboard",
-      link: "/Dashboard",
-    },
-    {
-      name: "Inicio",
-      link: "/inicio",
-    },
-    {
-      name: "Agregar Producto",
-      link: "/addProductos",
-    },
-    {
-      name: "Inventario",
-      link: "/inventoryProducts",
-    },
-    {
-      name: "Prueba",
-      link: "/prueba1"
-    }
+    { name: "Dashboard", link: "/Dashboard" },
+    { name: "Inicio", link: "/inicio" },
+    { name: "Agregar Producto", link: "/addProductos" },
+    { name: "Inventario", link: "/inventoryProducts" },
+    { name: "Prueba", link: "/prueba1" }
   ];
 
   return (
-    <div className="bg-primary text-text h-full">
+    <div className="bg-sidebar text-white h-full shadow-lg">
       <ul>
-        {menuItems.map((item, index) => {
+        {menuItems.map((item) => {
           const isActive = router.pathname === item.link;
 
           return (
             <li
               key={item.name}
-              className={`m-3 rounded-xl ${isActive ? "bg-gray-700 text-white" : "hover:bg-gray-700"
-                }`}
+              className={`m-3 rounded-xl ${
+                isActive
+                  ? "bg-gray-700 text-white shadow-md"
+                  : "hover:bg-gray-700"
+              }`}
             >
               <Link
                 className="flex w-full h-full py-2 pl-5 pr-20"

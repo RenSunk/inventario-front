@@ -5,27 +5,35 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./layouts/**/*.{js,ts,jsx,tsx}",
-    // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
-        primary: '#e8d1c5',
-        secondary: '#eddcd2',
-        accent: '#fff1e6',
-        background: '#f0efeb',
-        text: '#000000',
-        textWhite: '#ffffff',
-        header: '#eddcd2',
-        hovertheme: '#334155',
-        focustheme: '#334155',
-        buttontheme: '#b0745e',
-        buttonHoverTheme: '#935c49',
-        formButtonConfirmationTheme: '#1c8586',
-        formButtonConfirmationHoverTheme: '#1f7477',
-        urlText: '#238cd4',
-        Targets: '#334155'
+        // Colores base del diseño
+        beigePrimary: '#F5EADA',         // fondo superior
+        background: '#F7F0E6',     // fondo principal
+        sidebar: '#365369',       // sidebar oscuro
+        panelCard: '#324454',       // panel o card
+        text: '#111827',           // texto principal
+        bgLabelText: '#FAF8F2',        //Fondo Label Texto
+        colorLabelText: '#111827',    //Color Label Texto
+        colorPlaceHolderText: '#71718E',    //Color PlaceHolder Texto
+        focusLabelText: '#755D4D',    //Color Focus Label Texto
+        muted: '#6B7280',          // texto secundario
+        
+        // Botones
+        primary: '#147C74',        // botón principal teal
+        primaryHover: '#0F6660',
+        buttonTheme: '#B0745E',    // estilo alternativo
+        buttonHoverTheme: '#935C49',
+        confirm: '#1C8586',
+        confirmHover: '#1F7477',
+
+        // Otros
+        shadowUpDown:  '0 -2px 4px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.05)', // sombra para elementos elevados
+        white: '#FFFFFF',
+        urlText: '#238CD4',
       },
       fontFamily: {
         sans: ['Poppins', 'sans-serif']
@@ -37,4 +45,3 @@ module.exports = {
   },
   plugins: [],
 }
-

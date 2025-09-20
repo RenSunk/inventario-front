@@ -35,9 +35,10 @@ interface Product {
 }
 
 export default function Home() {
+  
   console.log("Se ingresa a la funcion Home de la clase inventoryProducts");
 
-  const { token } = useAuth();
+  const { token, setSessionExpired  } = useAuth();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -58,6 +59,10 @@ export default function Home() {
       },
     })
       .then(async (response) => {
+        if (response.status === 401) {
+          setSessionExpired(true);
+          throw new Error("Token expirado o inválido");
+        }
         if (!response.ok) {
           throw new Error(`Error HTTP: ${response.status}`);
         }
@@ -65,7 +70,13 @@ export default function Home() {
       })
       .then((data) => {
         console.log("Respuesta de la API:", data);
-        setProducts(data);
+
+        if (Array.isArray(data.results)) {
+          setProducts(data.results);
+        } else {
+          setProducts([]);
+        }
+
         setLoading(false);
       })
       .catch((error) => {
@@ -88,7 +99,7 @@ export default function Home() {
             {products.map((product) => (
               <div
                 key={product.id}
-                className="flex flex-col items-start justify-start m-4 rounded-lg bg-Targets text-white shadow-lg hover:shadow-xl w-full max-w-sm p-4 space-y-4"
+                className="flex flex-col items-start justify-start m-4 rounded-lg bg-panelCard text-white shadow-lg hover:shadow-xl w-full max-w-sm p-4 space-y-4"
               >
                 <div className="w-full flex justify-center">
                   <Image

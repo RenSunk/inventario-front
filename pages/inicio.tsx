@@ -11,8 +11,8 @@ export default function Home() {
       <div className="flex items-center justify-center h-16">
         <h1 className="color-red-100">{data}</h1>
       </div>
-      <div className="w-full items-center justify-center bg-primary grid grid-cols-4">
-        <div className="flex flex-col items-center justify-center m-16 rounded-lg bg-Targets text-textWhite hover:shadow-2xl hover:text-textWhite shadow-extra-intense w-72 h-72 cursor-pointer">
+      <div className="w-full items-center justify-center grid grid-cols-4">
+        <div className="flex flex-col items-center justify-center m-16 rounded-lg bg-Targets text-white hover:shadow-2xl hover:text-textWhite shadow-extra-intense w-72 h-72 cursor-pointer bg-panelCard">
           <h2 className="pb-5">Pintura</h2>
           <Image
             src={InventoryLoggin}
@@ -20,7 +20,7 @@ export default function Home() {
             className="rounded-lg object-cover w-60"
           />
         </div>
-        <div className="flex flex-col items-center justify-center m-16 rounded-lg bg-Targets text-textWhite hover:text-textWhite hover:shadow-2xl shadow-extra-intense w-72 h-72 cursor-pointer">
+        <div className="flex flex-col items-center justify-center m-16 rounded-lg bg-Targets text-white hover:text-textWhite hover:shadow-2xl shadow-extra-intense w-72 h-72 cursor-pointer bg-panelCard">
           <h2 className="pb-5 font-">Tornillos</h2>
           <Image
             src={InventoryLoggin}
@@ -28,7 +28,7 @@ export default function Home() {
             className="rounded-lg object-cover w-60"
           />
         </div>
-        <div className="flex flex-col items-center justify-center m-16 rounded-lg bg-Targets text-textWhite hover:shadow-2xl hover:text-textWhite shadow-extra-intense w-72 h-72 cursor-pointer">
+        <div className="flex flex-col items-center justify-center m-16 rounded-lg bg-Targets text-white hover:shadow-2xl hover:text-textWhite shadow-extra-intense w-72 h-72 cursor-pointer bg-panelCard">
           <h2 className="pb-5">Herramientas</h2>
           <Image
             src={InventoryLoggin}
@@ -36,8 +36,16 @@ export default function Home() {
             className="rounded-lg object-cover w-60"
           />
         </div>
-        <div className="flex flex-col items-center justify-center m-16 rounded-lg bg-Targets text-textWhite hover:shadow-2xl hover:text-textWhite shadow-extra-intense w-72 h-72 cursor-pointer">
+        <div className="flex flex-col items-center justify-center m-16 rounded-lg bg-Targets text-white hover:shadow-2xl hover:text-textWhite shadow-extra-intense w-72 h-72 cursor-pointer bg-panelCard">
           <h2 className="pb-5">Otros</h2>
+          <Image
+            src={InventoryLoggin}
+            alt="Inventario"
+            className="rounded-lg object-cover w-60"
+          />
+        </div>
+        <div className="flex flex-col items-center justify-center m-16 rounded-lg bg-Targets text-white hover:shadow-2xl hover:text-textWhite shadow-extra-intense w-72 h-72 cursor-pointer bg-panelCard">
+          <h2 className="pb-5">Pintura</h2>
           <Image
             src={InventoryLoggin}
             alt="Inventario"
