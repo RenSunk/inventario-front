@@ -41,17 +41,25 @@ export default function Home() {
   const { token, setSessionExpired  } = useAuth();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [page, setPage] = useState(1);
+  const [next, setNext] = useState<string | null>(null);
+  const [previous, setPrevious] = useState<string | null>(null);
+  const [count, setCount] = useState<number>(0);
+  const pageSize = 8;
 
   useEffect(() => {
 
+    setLoading(true);
+
     console.log("Se ingresa al useEffect de la clase inventoryProducts");
     console.log("Token:", token);
+    console.log("Valor Previous: ", previous);
 
     if (!token) {
       return;
     }
 
-    fetch("https://api.inventario.tecno-service-soft.com/inventario/ListarProductos/", {
+    fetch(`https://api.inventario.tecno-service-soft.com/inventario/ListarProductos/?page=${page}&page_size=${pageSize}`, {
       method: "GET",
       headers: {
         "Authorization": `${token}`,
@@ -69,21 +77,21 @@ export default function Home() {
         return response.json();
       })
       .then((data) => {
-        console.log("Respuesta de la API:", data);
+        console.log("Respuesta de la API Paginada:", data);
 
-        if (Array.isArray(data.results)) {
-          setProducts(data.results);
-        } else {
-          setProducts([]);
-        }
-
+        setProducts(data.results ?? []);
+        setNext(data.next);
+        console.log("previous data: ",data.previous);
+        setPrevious(data.previous);
+        setCount(data.count);
+          
         setLoading(false);
       })
       .catch((error) => {
         console.error("Error al obtener los productos:", error);
         setLoading(false);
       });
-  }, [token]);
+  }, [token,page,pageSize]);
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -158,8 +166,30 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <div className="flex justify-center items-center mt-4 space-x-4">
+            <button
+              className="bg-blue-500 px-4 py-2 rounded disabled:bg-gray-500"
+              disabled={page === 1}
+              onClick={() => setPage((p) => Math.max(p - 1, 1))}
+            >
+              ◀ Anterior
+            </button>
+
+            <span className="font-semibold text-white">
+              Página {page} / {Math.ceil(count / pageSize)}
+            </span>
+
+            <button
+              className="bg-blue-500 px-4 py-2 rounded disabled:bg-gray-500"
+              disabled={page >= Math.ceil(count / pageSize)}
+              onClick={() => setPage((p) => p + 1)}
+            >
+              Siguiente ▶
+            </button>
+          </div>
         </div>
       )}
+
     </div>
   );
 }
