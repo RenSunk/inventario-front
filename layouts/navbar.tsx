@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { Person, Settings, Logout } from "@mui/icons-material";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
-import { useAuth } from "../context/AuthContext";// Corrección: usamos el hook, no el contexto directo
+import { useAuth } from "../context/AuthContext";
 
 export const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -68,7 +68,10 @@ export const Navbar = () => {
             zIndex: 1,
           }}
         >
-          <button className="flex items-center gap-2 hover:bg-hovertheme hover:text-white w-full px-5 my-2">
+          <button 
+            className="flex items-center gap-2 hover:bg-hovertheme hover:text-white w-full px-5 my-2"
+            onClick={() => router.push("/perfilUsuario")}
+          >
             <Person />
             <h6>Actualizar</h6>
           </button>
