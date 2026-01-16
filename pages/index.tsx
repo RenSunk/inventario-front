@@ -5,10 +5,12 @@ import { useRouter } from 'next/router';
 import LoadingComponent from "../components/Loading/loading";
 import React, { useState } from "react";
 import Cookies from 'js-cookie';
+import { useAuth } from '../context/AuthContext';
 
 export default function Login() {
 
     const router = useRouter();
+    const { setToken } = useAuth();
     const [usuario, setUsuario] = useState('');
     const [contrasena, setContrasena] = useState('');
     const [id, setId] = useState('');
@@ -47,6 +49,8 @@ export default function Login() {
 
                 Cookies.set(encryptTokenName, encryptToken, { expires: 1 });
                 Cookies.set(encryptuserName, encryptUser, { expires: 1 });
+
+                setToken(data.access_token);
 
                 setTimeout(() => {
                     router.push('/inicio');

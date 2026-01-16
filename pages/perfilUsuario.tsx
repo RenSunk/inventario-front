@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { Mainlayout } from "../layouts/Mainlayout";
 import { useAuth } from "../context/AuthContext";
+import { constants } from "buffer";
 
 interface Perfil {
     username: number;
@@ -16,7 +17,6 @@ const BACKEND_BASE_URL = "https://api.inventario.tecno-service-soft.com";
 
 export default function PerfilUsuario() {
     const { token, setSessionExpired } = useAuth();
-
     const [loading, setLoading] = useState<boolean>(true);
     const [perfil, setPerfil] = useState<Perfil | null>(null);
 

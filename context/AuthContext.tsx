@@ -16,15 +16,27 @@ const AuthContext = createContext<AuthContextType>({
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [token, setToken] = useState<string | null>(null);
+  const [token, setToken] = useState<string | null>(() => {
+    try {
+      if (typeof window === "undefined") return null;
+      const cookieToken = Cookies.get(btoa("token"));
+      return cookieToken ? atob(cookieToken) : null;
+    } catch (e) {
+      return null;
+    }
+  });
   const [sessionExpired, setSessionExpired] = useState(false);
 
   useEffect(() => {
-    const cookieToken = Cookies.get(btoa("token"));
-    if (cookieToken) {
-      setToken(atob(cookieToken));
+    try {
+      const cookieToken = Cookies.get(btoa("token"));
+      if (cookieToken && !token) {
+        setToken(atob(cookieToken));
+      }
+    } catch (e) {
+      // ignore (e.g., server-side or cookie read error)
     }
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     if (token) {
